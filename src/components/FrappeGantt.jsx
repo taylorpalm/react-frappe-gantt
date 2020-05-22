@@ -3,7 +3,7 @@ import React, {
   createRef,
 } from "react";
 import Gantt from "frappe-gantt";
-import Task from "./Task.js";
+import Task from "../lib/Task.js";
 
 export default class FrappeGantt extends Component {
   
