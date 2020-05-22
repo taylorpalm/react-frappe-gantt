@@ -1,5 +1,5 @@
-export const {
+export {
   FrappeGantt,
   Task,
   ViewMode
-} = require("./dist/frappe-gantt.cjs");
+} from "./result/app.jsx";

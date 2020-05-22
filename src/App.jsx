@@ -1,5 +1,7 @@
 "use strict";
-import React from "react";
+import React, {
+  Component,
+} from "react";
 
 import { FrappeGantt } from "./FrappeGantt";
 import { Task } from "./Task";
@@ -30,23 +32,15 @@ const tasks = [
     progress: 0,
     dependencies: "Task 2, Task 1"
   }
-] as Task[];
+].map(x => new Task(x));
 
-class App extends React.Component<any, any> {
-  state = { mode: ViewMode.Month };
+class App extends Component {
 
-  componentDidMount() {
-    console.log("test");
-
-    setTimeout(() => {
-      console.log("Setting State!");
-      this.setState({ mode: ViewMode.Week });
-
-      setTimeout(() => {
-        console.log("Setting State!");
-        this.setState({ mode: ViewMode.HalfDay });
-      }, 3000);
-    }, 3000);
+  constructor(props){
+    super(props);
+    this.state = {
+      mode: ViewMode.Month,
+    };
   }
 
   render() {
