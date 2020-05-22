@@ -1,4 +1,4 @@
-export const ViewMode  = {
+export default {
   'QuarterDay': "Quarter Day",
   'HalfDay': "Half Day",
   'Day': "Day",

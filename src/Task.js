@@ -1,13 +1,10 @@
-export class Task {
+export default class Task {
   constructor(options = {}) {
       this._dependencies = [];
       this.id = "";
       this.name = "";
       this.start = "";
       this.end = "";
-      /**
-       * Progress in percentage
-       */
       this._progress = 0.52;
       Object.assign(this, options);
   }

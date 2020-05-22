@@ -1,8 +1,11 @@
-import React, { createRef } from "react";
+import React, {
+  Component,
+  createRef,
+} from "react";
 import Gantt from "frappe-gantt";
-import { Task } from "./Task";
+import Task from "./Task.js";
 
-export class FrappeGantt extends React.Component {
+export default class FrappeGantt extends Component {
   
   constructor(props){
     super(props);

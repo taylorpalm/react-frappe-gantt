@@ -1,11 +1,10 @@
-"use strict";
 import React, {
   Component,
 } from "react";
 
-import { FrappeGantt } from "./FrappeGantt";
-import { Task } from "./Task";
-import { ViewMode } from "./ViewMode";
+import FrappeGantt from "./FrappeGantt.jsx";
+import Task from "./Task.js";
+import ViewMode from "./ViewMode.js";
 
 const tasks = [
   {
