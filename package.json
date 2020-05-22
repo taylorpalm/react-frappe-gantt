@@ -1,5 +1,5 @@
 {
-  "name": "frappe-gantt-react",
+  "name": "react-frappe-gantt",
   "version": "0.1.0",
   "license": "MIT",
   "main": "./index.js",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Soremwar/frappe-gantt-react"
+    "url": "https://github.com/Soremwar/react-frappe-gantt"
   },
   "bugs": {
-    "url": "https://github.com/Soremwar/frappe-gantt-react/issues"
+    "url": "https://github.com/Soremwar/react-frappe-gantt/issues"
   },
   "keywords": [
     "react",
@@ -30,6 +30,9 @@
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "compile": "parcel build result/app.jsx --out-dir public --out-file app.js --no-source-maps",
     "compile-dev": "parcel watch result/app.jsx --out-dir public --out-file app.js --no-source-maps --no-hmr"
@@ -37,5 +40,9 @@
   "devDependencies": {
     "parcel-bundler": "1.12.4",
     "@babel/core": "7.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
