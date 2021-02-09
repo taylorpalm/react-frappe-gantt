@@ -65,30 +65,48 @@ const tasks = [
     dependencies: "Task 2, Task 1"
   }
 ].map(x => new Task(x));
+{
+  // Using class based component
+  class App extends Component {
 
-class App extends Component {
+    constructor(props){
+      super(props);
+      this.state = {
+        mode: ViewMode.Month,
+      };
+    }
 
-  constructor(props){
-    super(props);
-    this.state = {
-      mode: ViewMode.Month,
-    };
+    render() {
+      return (
+        <div>
+          <FrappeGantt
+            tasks={tasks}
+            viewMode={this.state.mode}
+            onClick={task => console.log(task)}
+            onDateChange={(task, start, end) => console.log(task, start, end)}
+            onProgressChange={(task, progress) => console.log(task, progress)}
+            onTasksChange={tasks => console.log(tasks)}
+          />
+        </div>
+      );
+    }
   }
+}
 
-  render() {
+{
+  // Using function based component
+  const App = () => {
     return (
-      <div>
-        <FrappeGantt
-          tasks={tasks}
-          viewMode={this.state.mode}
-          onClick={task => console.log(task)}
-          onDateChange={(task, start, end) => console.log(task, start, end)}
-          onProgressChange={(task, progress) => console.log(task, progress)}
-          onTasksChange={tasks => console.log(tasks)}
-        />
-      </div>
+      <FrappeGantt
+        onClick={task => console.log(task)}
+        onDateChange={(task, start, end) => console.log(task, start, end)}
+        onProgressChange={(task, progress) => console.log(task, progress)}
+        onTasksChange={tasks => console.log(tasks)}
+        tasks={tasks}
+        viewMode={ViewMode.Month}
+      />
     );
-  }
+  };
 }
 ```
 
