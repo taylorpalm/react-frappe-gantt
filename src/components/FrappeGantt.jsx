@@ -1,13 +1,9 @@
-import React, {
-  Component,
-  createRef,
-} from "react";
+import React, { Component, createRef } from "react";
 import Gantt from "frappe-gantt";
 import Task from "../lib/Task.js";
 
 export default class FrappeGantt extends Component {
-  
-  constructor(props){
+  constructor(props) {
     super(props);
     this._target = createRef();
     this._svg = createRef();
@@ -15,14 +11,14 @@ export default class FrappeGantt extends Component {
 
     this.state = {
       viewMode: null,
-      tasks: []
+      tasks: [],
     };
   }
 
   static getDerivedStateFromProps(nextProps) {
     return {
       viewMode: nextProps.viewMode,
-      tasks: nextProps.tasks.map(t => new Task(t))
+      tasks: nextProps.tasks.map((t) => new Task(t)),
     };
   }
 
@@ -44,7 +40,7 @@ export default class FrappeGantt extends Component {
       on_date_change: (task, start, end) => {
         this.props.onDateChange(task, start, end);
         this.props.onTasksChange(this.props.tasks);
-      }
+      },
     });
 
     if (this._gantt) {
