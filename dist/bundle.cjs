@@ -1137,6 +1137,36 @@ class Popup {
     }
 }
 
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ".gantt .grid-background{fill:none}.gantt .grid-header{fill:#fff;stroke:#e0e0e0;stroke-width:1.4}.gantt .grid-row{fill:#fff}.gantt .grid-row:nth-child(2n){fill:#f5f5f5}.gantt .row-line{stroke:#ebeff2}.gantt .tick{stroke:#e0e0e0;stroke-width:.2}.gantt .tick.thick{stroke-width:.4}.gantt .today-highlight{fill:#fcf8e3;opacity:.5}.gantt .arrow{fill:none;stroke:#666;stroke-width:1.4}.gantt .bar{fill:#b8c2cc;stroke:#8d99a6;stroke-width:0;transition:stroke-width .3s ease;user-select:none}.gantt .bar-progress{fill:#a3a3ff}.gantt .bar-invalid{fill:transparent;stroke:#8d99a6;stroke-width:1;stroke-dasharray:5}.gantt .bar-invalid~.bar-label{fill:#555}.gantt .bar-label{fill:#fff;dominant-baseline:central;text-anchor:middle;font-size:12px;font-weight:lighter}.gantt .bar-label.big{fill:#555;text-anchor:start}.gantt .handle{fill:#ddd;cursor:ew-resize;opacity:0;visibility:hidden;transition:opacity .3s ease}.gantt .bar-wrapper{cursor:pointer;outline:none}.gantt .bar-wrapper:hover .bar{fill:#a9b5c1}.gantt .bar-wrapper:hover .bar-progress{fill:#8a8aff}.gantt .bar-wrapper:hover .handle{visibility:visible;opacity:1}.gantt .bar-wrapper.active .bar{fill:#a9b5c1}.gantt .bar-wrapper.active .bar-progress{fill:#8a8aff}.gantt .lower-text,.gantt .upper-text{font-size:12px;text-anchor:middle}.gantt .upper-text{fill:#555}.gantt .lower-text{fill:#333}.gantt .hide{display:none}.gantt-container{position:relative;overflow:auto;font-size:12px}.gantt-container .popup-wrapper{position:absolute;top:0;left:0;background:rgba(0,0,0,.8);padding:0;color:#959da5;border-radius:3px}.gantt-container .popup-wrapper .title{border-bottom:3px solid #a3a3ff;padding:10px}.gantt-container .popup-wrapper .subtitle{padding:10px;color:#dfe2e5}.gantt-container .popup-wrapper .pointer{position:absolute;height:5px;margin:0 0 0 -5px;border:5px solid transparent;border-top-color:rgba(0,0,0,.8)}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vZGVfbW9kdWxlcy9mcmFwcGUtZ2FudHQvc3JjL2dhbnR0LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBWUEsd0JBRUUsU0FBVSxDQUZaLG9CQUtFLFNBQWEsQ0FDYixjQWhCb0IsQ0FpQnBCLGdCQUFpQixDQVBuQixpQkFVRSxTQUFhLENBVmYsK0JBYUUsWUF0QmdCLENBU2xCLGlCQWdCRSxjQXhCMEIsQ0FRNUIsYUFtQkUsY0E3Qm9CLENBOEJwQixlQUFpQixDQXBCbkIsbUJBc0JHLGVBQWlCLENBdEJwQix3QkEwQkUsWUFqQ29CLENBa0NwQixVQUFZLENBM0JkLGNBK0JFLFNBQVUsQ0FDVixXQXRDZSxDQXVDZixnQkFBaUIsQ0FqQ25CLFlBcUNFLFlBakRpQixDQWtEakIsY0FqRGtCLENBa0RsQixjQUFlLENBQ2YsZ0NBQWlDLENBQ2pDLGdCQUFpQixDQXpDbkIscUJBNENFLFlBL0NZLENBR2Qsb0JBK0NFLGdCQUFpQixDQUNqQixjQTNEa0IsQ0E0RGxCLGNBQWUsQ0FDZixrQkFBbUIsQ0FsRHJCLCtCQXFERyxTQTFEYyxDQUtqQixrQkF5REUsU0FBVSxDQUNWLHlCQUEwQixDQUMxQixrQkFBbUIsQ0FDbkIsY0FBZSxDQUNmLG1CQUFvQixDQTdEdEIsc0JBZ0VHLFNBckVjLENBc0VkLGlCQUFrQixDQWpFckIsZUFzRUUsU0F4RWlCLENBeUVqQixnQkFBaUIsQ0FDakIsU0FBVSxDQUNWLGlCQUFrQixDQUNsQiwyQkFBNEIsQ0ExRTlCLG9CQThFRSxjQUFlLENBQ2YsWUFBYSxDQS9FZiwrQkFtRkksWUFBMkIsQ0FuRi9CLHdDQXVGSSxZQUFzQixDQXZGMUIsa0NBMkZJLGtCQUFtQixDQUNuQixTQUFVLENBNUZkLGdDQWtHSSxZQUEyQixDQWxHL0IseUNBc0dJLFlBQXNCLENBdEcxQixzQ0E0R0UsY0FBZSxDQUNmLGtCQUFtQixDQTdHckIsbUJBZ0hFLFNBckhlLENBS2pCLG1CQW1IRSxTQXZIZSxDQUlqQixhQXVIRSxZQUFhLENBSWYsaUJBQ0MsaUJBQWtCLENBQ2xCLGFBQWMsQ0FDZCxjQUFlLENBSGhCLGdDQU1FLGlCQUFrQixDQUNsQixLQUFNLENBQ04sTUFBTyxDQUNQLHlCQUE4QixDQUM5QixTQUFVLENBQ1YsYUFBYyxDQUNkLGlCQUFrQixDQVpwQix1Q0FlRywrQkE3SVcsQ0E4SVgsWUFBYSxDQWhCaEIsMENBb0JHLFlBQWEsQ0FDYixhQUFjLENBckJqQix5Q0F5QkcsaUJBQWtCLENBQ2xCLFVBQVcsQ0FDWCxpQkFBa0IsQ0FFbEIsNEJBQW9DLENBQXBDLCtCQUFvQyIsImZpbGUiOiJnYW50dC5zY3NzIn0= */";
+styleInject(css_248z);
+
 const VIEW_MODE = {
     QUARTER_DAY: 'Quarter Day',
     HALF_DAY: 'Half Day',
