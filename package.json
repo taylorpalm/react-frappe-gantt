@@ -1,6 +1,6 @@
 {
   "name": "react-frappe-gantt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "./index.js",
   "author": {
@@ -25,24 +25,12 @@
     "project management"
   ],
   "dependencies": {
-    "frappe-gantt": "0.3.0",
-    "moment": "2.24.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "frappe-gantt": "0.5.0",
+    "moment": "^2.24.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "files": [
     "src"
-  ],
-  "scripts": {
-    "compile": "parcel build result/app.jsx --out-dir public --out-file app.js --no-source-maps",
-    "compile-dev": "parcel watch result/app.jsx --out-dir public --out-file app.js --no-source-maps --no-hmr"
-  },
-  "devDependencies": {
-    "parcel-bundler": "1.12.4",
-    "@babel/core": "7.0.0"
-  },
-  "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  }
+  ]
 }
