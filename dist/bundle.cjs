@@ -2178,6 +2178,7 @@ var FrappeGantt = /*#__PURE__*/function (_Component) {
       this._gantt = new Gantt(this._svg.current, this.state.tasks, {
         on_click: this.props.onClick,
         on_view_change: this.props.onViewChange,
+        custom_popup_html: this.props.customPopUpHtml,
         on_progress_change: function on_progress_change(task, progress) {
           _this2.props.onProgressChange(task, progress);
 
